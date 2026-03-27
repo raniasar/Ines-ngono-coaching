@@ -14,13 +14,13 @@
 :root {
   --bg: #FAFAF8;
   --white: #FFFFFF;
-  --green: #2D4A30;
-  --green-mid: #4A7050;
-  --green-light: #EEF3EE;
+  --green: #4E7C59;
+  --green-mid: #6B9A75;
+  --green-light: #EFF5F0;
   --gold: #B8954A;
-  --text: #1C2B1E;
-  --text-soft: #6B7D6C;
-  --border: #E2E8E2;
+  --text: #263029;
+  --text-soft: #718272;
+  --border: #E2EAE2;
   --radius: 2px;
 }
 
@@ -51,14 +51,29 @@ nav {
 nav.scrolled { border-color: var(--border); }
 
 .logo {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  gap: 10px;
+}
+.logo-svg { width: 46px; height: 46px; flex-shrink: 0; }
+.logo-text { display: flex; flex-direction: column; line-height: 1; }
+.logo-name {
   font-family: 'Playfair Display', serif;
   font-size: 20px;
   font-weight: 500;
   color: var(--green);
-  text-decoration: none;
   letter-spacing: -0.01em;
 }
-.logo span { color: var(--gold); }
+.logo-name em { font-style: italic; font-weight: 400; color: var(--green-mid); }
+.logo-tagline {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-top: 3px;
+}
 
 .nav-links {
   display: flex;
@@ -88,7 +103,7 @@ nav.scrolled { border-color: var(--border); }
   text-decoration: none;
   transition: background 0.25s, transform 0.2s;
 }
-.nav-btn:hover { background: #1e3421; transform: translateY(-1px); }
+.nav-btn:hover { background: #3a6044; transform: translateY(-1px); }
 
 /* ── HERO ── */
 #hero {
@@ -103,13 +118,12 @@ nav.scrolled { border-color: var(--border); }
   overflow: hidden;
 }
 
-/* Subtle background decoration */
 #hero::before {
   content: '';
   position: absolute;
   width: 800px; height: 800px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(45,74,48,0.05) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(78,124,89,0.06) 0%, transparent 70%);
   top: 50%; left: 50%;
   transform: translate(-50%, -50%);
   pointer-events: none;
@@ -148,17 +162,14 @@ h1 {
   opacity: 0;
   animation: fadeUp 0.7s ease 0.4s forwards;
 }
-h1 em {
-  font-style: italic;
-  color: var(--green-mid);
-}
+h1 em { font-style: italic; color: var(--green-mid); }
 
 .hero-sub {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 300;
-  line-height: 1.8;
+  line-height: 1.85;
   color: var(--text-soft);
-  max-width: 480px;
+  max-width: 520px;
   margin-bottom: 48px;
   opacity: 0;
   animation: fadeUp 0.7s ease 0.6s forwards;
@@ -181,7 +192,7 @@ h1 em {
   opacity: 0;
   animation: fadeUp 0.7s ease 0.8s forwards;
 }
-.hero-cta:hover { background: #1e3421; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(45,74,48,0.2); }
+.hero-cta:hover { background: #3a6044; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(78,124,89,0.22); }
 .hero-cta svg { transition: transform 0.3s; }
 .hero-cta:hover svg { transform: translateX(4px); }
 
@@ -194,9 +205,7 @@ h1 em {
   opacity: 0;
   animation: fadeUp 0.7s ease 1s forwards;
 }
-.hero-value {
-  text-align: center;
-}
+.hero-value { text-align: center; }
 .hero-value-icon { font-size: 22px; margin-bottom: 8px; }
 .hero-value-text {
   font-size: 12px;
@@ -274,28 +283,42 @@ h1 em {
 .about-visual {
   background: var(--green);
   border-radius: 4px;
-  padding: 56px 48px;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+.about-photo {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: brightness(0.96) contrast(1.04);
+}
+.about-quote-block {
+  padding: 40px 44px 44px;
   position: relative;
   overflow: hidden;
 }
-.about-visual::before {
+.about-quote-block::before {
   content: '"';
   position: absolute;
   font-family: 'Playfair Display', serif;
-  font-size: 260px;
-  color: rgba(255,255,255,0.04);
+  font-size: 200px;
+  color: rgba(255,255,255,0.05);
   line-height: 1;
   top: -20px; left: 16px;
   user-select: none;
 }
 .about-quote {
   font-family: 'Playfair Display', serif;
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 400;
   font-style: italic;
   color: rgba(250,250,248,0.9);
-  line-height: 1.6;
-  margin-bottom: 32px;
+  line-height: 1.65;
+  margin-bottom: 20px;
   position: relative;
   z-index: 1;
 }
@@ -355,7 +378,7 @@ h1 em {
 .service-card:hover {
   border-color: var(--green);
   transform: translateY(-4px);
-  box-shadow: 0 16px 48px rgba(45,74,48,0.08);
+  box-shadow: 0 16px 48px rgba(78,124,89,0.1);
 }
 
 .service-icon { font-size: 28px; margin-bottom: 20px; display: block; }
@@ -400,7 +423,6 @@ h1 em {
   justify-content: space-between;
 }
 
-.pricing-info {}
 .pricing-badge {
   display: inline-block;
   font-size: 10px;
@@ -503,7 +525,7 @@ h1 em {
   transition: all 0.3s;
   white-space: nowrap;
 }
-.pricing-cta:hover { background: #1e3421; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(45,74,48,0.2); }
+.pricing-cta:hover { background: #3a6044; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(78,124,89,0.22); }
 .pricing-note {
   font-size: 11px;
   font-weight: 300;
@@ -533,7 +555,6 @@ h1 em {
   margin-top: 60px;
 }
 
-.contact-info {}
 .contact-info-title {
   font-family: 'Playfair Display', serif;
   font-size: 22px;
@@ -661,21 +682,44 @@ h1 em {
 .submit-btn svg { transition: transform 0.25s; }
 .submit-btn:hover svg { transform: translateX(3px); }
 
+/* Success message */
+.success-msg {
+  display: none;
+  text-align: center;
+  padding: 32px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(184,149,74,0.3);
+  border-radius: 4px;
+  margin-top: 16px;
+}
+.success-msg .success-icon { font-size: 40px; margin-bottom: 16px; }
+.success-msg h4 {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--bg);
+  margin-bottom: 8px;
+}
+.success-msg p {
+  font-size: 14px;
+  font-weight: 300;
+  color: rgba(250,250,248,0.6);
+}
+
 /* ── FOOTER ── */
 footer {
-  background: #121e13;
+  background: #192b1b;
   padding: 32px 56px;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .footer-logo {
-  font-family: 'Playfair Display', serif;
-  font-size: 18px;
-  color: rgba(250,250,248,0.7);
+  display: flex;
+  align-items: center;
+  gap: 9px;
   text-decoration: none;
 }
-.footer-logo span { color: var(--gold); }
 .footer-copy {
   font-size: 12px;
   font-weight: 300;
@@ -685,9 +729,13 @@ footer {
 
 /* ── SCROLL REVEAL ── */
 .reveal {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.animate-hidden {
   opacity: 0;
   transform: translateY(28px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
 }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .d1 { transition-delay: 0.1s; }
@@ -732,7 +780,32 @@ footer {
 
 <!-- NAV -->
 <nav id="nav">
-  <a href="#" class="logo">Ines<span>.</span>Ngono</a>
+  <a href="#" class="logo">
+    <svg class="logo-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="36" fill="#EFF5F0"/>
+      <circle cx="40" cy="40" r="34" fill="none" stroke="#4E7C59" stroke-width="0.6" opacity="0.35"/>
+      <circle cx="40" cy="40" r="31" fill="none" stroke="#4E7C59" stroke-width="0.5" stroke-dasharray="2 4" opacity="0.55"/>
+      <ellipse cx="40" cy="10" rx="3" ry="5.5" fill="#4E7C59" opacity="0.45"/>
+      <ellipse cx="40" cy="70" rx="3" ry="5.5" fill="#4E7C59" opacity="0.45" transform="rotate(180 40 70)"/>
+      <ellipse cx="10" cy="40" rx="5.5" ry="3" fill="#4E7C59" opacity="0.45"/>
+      <ellipse cx="70" cy="40" rx="5.5" ry="3" fill="#4E7C59" opacity="0.45"/>
+      <ellipse cx="19" cy="19" rx="3" ry="5.5" fill="#B8954A" opacity="0.4" transform="rotate(-45 19 19)"/>
+      <ellipse cx="61" cy="19" rx="3" ry="5.5" fill="#B8954A" opacity="0.4" transform="rotate(45 61 19)"/>
+      <ellipse cx="19" cy="61" rx="3" ry="5.5" fill="#B8954A" opacity="0.4" transform="rotate(45 19 61)"/>
+      <ellipse cx="61" cy="61" rx="3" ry="5.5" fill="#B8954A" opacity="0.4" transform="rotate(-45 61 61)"/>
+      <rect x="25" y="22" width="2.5" height="36" rx="0.5" fill="#4E7C59"/>
+      <rect x="20" y="22" width="13" height="2" rx="0.5" fill="#4E7C59"/>
+      <rect x="20" y="56" width="13" height="2" rx="0.5" fill="#4E7C59"/>
+      <rect x="36.5" y="22" width="2.5" height="36" rx="0.5" fill="#4E7C59"/>
+      <rect x="52" y="22" width="2.5" height="36" rx="0.5" fill="#4E7C59"/>
+      <line x1="37.5" y1="23" x2="53.5" y2="57" stroke="#4E7C59" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="40" cy="40" r="2" fill="#B8954A" opacity="0.7"/>
+    </svg>
+    <span class="logo-text">
+      <span class="logo-name"><em>Ines</em> Ngono</span>
+      <span class="logo-tagline">Coach Bien-Être</span>
+    </span>
+  </a>
   <ul class="nav-links">
     <li><a href="#about">À propos</a></li>
     <li><a href="#services">Accompagnement</a></li>
@@ -799,10 +872,13 @@ footer {
     </div>
   </div>
   <div class="about-visual about-order reveal d2">
-    <p class="about-quote">
-      "Votre transformation commence par une décision : prendre soin de vous."
-    </p>
-    <p class="about-signature">— Ines Ngono</p>
+    <img class="about-photo" src="photo.png" alt="Ines Ngono — Coach Bien-Être">
+    <div class="about-quote-block">
+      <p class="about-quote">
+        "Votre transformation commence par une décision : prendre soin de vous."
+      </p>
+      <p class="about-signature">— Ines Ngono</p>
+    </div>
   </div>
 </section>
 
@@ -817,12 +893,12 @@ footer {
   <div class="services-grid">
     <div class="service-card reveal d1">
       <span class="service-icon">🌿</span>
-      <div class="service-name">Reconstruction post-traumatique</div>
+      <div class="service-name">Surmonter un traumatisme</div>
       <p class="service-desc">Un espace sécurisé pour traverser et dépasser les traumatismes, transformer vos blessures en force, à votre propre rythme.</p>
     </div>
     <div class="service-card reveal d2">
       <span class="service-icon">✨</span>
-      <div class="service-name">Confiance en soi</div>
+      <div class="service-name">Retrouver confiance en soi</div>
       <p class="service-desc">Reconstruire une image positive de vous-même, développer votre estime personnelle et avancer avec assurance dans votre vie.</p>
     </div>
     <div class="service-card reveal d3">
@@ -832,12 +908,12 @@ footer {
     </div>
     <div class="service-card reveal d2">
       <span class="service-icon">🧭</span>
-      <div class="service-name">Errance spirituelle</div>
+      <div class="service-name">Retrouver son chemin de vie</div>
       <p class="service-desc">Clarifier votre chemin de vie, retrouver un sens profond à votre existence et vous reconnecter à vos valeurs essentielles.</p>
     </div>
     <div class="service-card reveal d3">
       <span class="service-icon">⚡</span>
-      <div class="service-name">HPI & Organisation</div>
+      <div class="service-name">S'organiser en tant que HPI</div>
       <p class="service-desc">Vous êtes HPI ? Des méthodes d'organisation adaptées à votre profil unique pour enfin avancer sereinement.</p>
     </div>
     <div class="service-card reveal d4" style="background:var(--green); border-color:var(--green); display:flex; flex-direction:column; justify-content:center; align-items:center; text-align:center; gap:16px;">
@@ -851,7 +927,7 @@ footer {
 <section id="pricing">
   <div class="section-header">
     <div class="section-label reveal">Tarifs</div>
-    <h2 class="section-title reveal d1" style="color:var(--green)">Un investissement <em>pour vous</em></h2>
+    <h2 class="section-title reveal d1" style="color:var(--green)">Choisir de prendre <em>soin de vous</em></h2>
   </div>
   <div class="pricing-card reveal d2">
     <div class="pricing-top">
@@ -871,23 +947,23 @@ footer {
     <div class="pricing-bottom">
       <ul class="pricing-includes">
         <li class="pricing-include">
-          <span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#2D4A30" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>
+          <span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#4E7C59" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>
           Séance 100% en ligne par appel vidéo
         </li>
         <li class="pricing-include">
-          <span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#2D4A30" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>
+          <span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#4E7C59" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>
           Accompagnement entièrement personnalisé
         </li>
         <li class="pricing-include">
-          <span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#2D4A30" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>
+          <span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#4E7C59" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>
           Respect de votre rythme, sans pression
         </li>
         <li class="pricing-include">
-          <span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#2D4A30" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>
+          <span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#4E7C59" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>
           Écoute bienveillante garantie
         </li>
         <li class="pricing-include">
-          <span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#2D4A30" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>
+          <span class="check"><svg viewBox="0 0 12 12" fill="none" stroke="#4E7C59" stroke-width="2"><path d="M2 6l3 3 5-5"/></svg></span>
           Sans engagement de durée
         </li>
       </ul>
@@ -913,7 +989,7 @@ footer {
           N'hésitez pas à me contacter par le moyen qui vous convient le mieux. Je réponds dans les 24h.
         </p>
         <div class="contact-channels">
-          <a href="mailto:contact@inesngono.fr" class="contact-channel">
+          <a href="/cdn-cgi/l/email-protection#c9aaa6a7bda8aabd89a0a7acbaa7aea6a7a6e7aaa6a4" class="contact-channel">
             <div class="ch-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="#B8954A" stroke-width="1.8">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
@@ -922,48 +998,49 @@ footer {
             </div>
             <div>
               <div class="ch-label">Email</div>
-              <div class="ch-value">contact@inesngono.fr</div>
+              <div class="ch-value"><span class="__cf_email__" data-cfemail="1774787963767463577e79726479707879783974787a">[email&#160;protected]</span></div>
             </div>
           </a>
-          <a href="https://wa.me/" class="contact-channel">
+          <a href="tel:+33652768159" class="contact-channel">
             <div class="ch-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="#B8954A" stroke-width="1.8">
-                <path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/>
+                <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 013 1.18 2 2 0 015 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
               </svg>
             </div>
             <div>
-              <div class="ch-label">WhatsApp</div>
-              <div class="ch-value">Message direct</div>
+              <div class="ch-label">Téléphone</div>
+              <div class="ch-value">06 52 76 81 59</div>
             </div>
           </a>
         </div>
       </div>
-      <div class="contact-form reveal d2">
+
+      <div class="contact-form reveal d2" id="contactFormWrapper">
         <div class="form-row">
           <div class="field">
-            <label>Prénom</label>
-            <input type="text" placeholder="Sophie...">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" placeholder="Sophie...">
           </div>
           <div class="field">
-            <label>Email</label>
-            <input type="email" placeholder="votre@email.com">
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="votre@email.com">
           </div>
         </div>
         <div class="field">
-          <label>Ce qui vous amène</label>
-          <select>
+          <label for="sujet">Ce qui vous amène</label>
+          <select id="sujet">
             <option value="" disabled selected>Choisissez un sujet...</option>
-            <option>Reconstruction après un traumatisme</option>
+            <option>Surmonter un traumatisme</option>
             <option>Retrouver confiance en soi</option>
             <option>Surmonter la dépression</option>
-            <option>Errance spirituelle</option>
-            <option>Accompagnement HPI</option>
+            <option>Retrouver son chemin de vie</option>
+            <option>S'organiser en tant que HPI</option>
             <option>Autre</option>
           </select>
         </div>
         <div class="field">
-          <label>Message</label>
-          <textarea placeholder="Partagez ce que vous ressentez..."></textarea>
+          <label for="message">Message</label>
+          <textarea id="message" placeholder="Partagez ce que vous ressentez..."></textarea>
         </div>
         <div class="form-submit">
           <p class="form-note">Réponse sous 24h.<br>Confidentialité assurée.</p>
@@ -974,6 +1051,11 @@ footer {
             </svg>
           </button>
         </div>
+        <div class="success-msg" id="successMsg">
+          <div class="success-icon">🌿</div>
+          <h4>Message envoyé !</h4>
+          <p>Merci de m'avoir contactée. Je vous répondrai dans les 24h avec bienveillance.</p>
+        </div>
       </div>
     </div>
   </div>
@@ -981,11 +1063,36 @@ footer {
 
 <!-- FOOTER -->
 <footer>
-  <a href="#" class="footer-logo">Ines<span>.</span>Ngono</a>
-  <p class="footer-copy">© 2025 Ines Ngono — Coach Bien-Être. Tous droits réservés.</p>
+  <a href="#" class="footer-logo">
+    <svg style="width:30px;height:30px;flex-shrink:0;" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="40" cy="40" r="36" fill="rgba(78,124,89,0.15)"/>
+      <circle cx="40" cy="40" r="34" fill="none" stroke="#4E7C59" stroke-width="0.7" opacity="0.4"/>
+      <circle cx="40" cy="40" r="31" fill="none" stroke="#4E7C59" stroke-width="0.5" stroke-dasharray="2 4" opacity="0.45"/>
+      <ellipse cx="40" cy="10" rx="3" ry="5.5" fill="#4E7C59" opacity="0.5"/>
+      <ellipse cx="40" cy="70" rx="3" ry="5.5" fill="#4E7C59" opacity="0.5" transform="rotate(180 40 70)"/>
+      <ellipse cx="10" cy="40" rx="5.5" ry="3" fill="#4E7C59" opacity="0.5"/>
+      <ellipse cx="70" cy="40" rx="5.5" ry="3" fill="#4E7C59" opacity="0.5"/>
+      <ellipse cx="19" cy="19" rx="3" ry="5.5" fill="#B8954A" opacity="0.45" transform="rotate(-45 19 19)"/>
+      <ellipse cx="61" cy="19" rx="3" ry="5.5" fill="#B8954A" opacity="0.45" transform="rotate(45 61 19)"/>
+      <ellipse cx="19" cy="61" rx="3" ry="5.5" fill="#B8954A" opacity="0.45" transform="rotate(45 19 61)"/>
+      <ellipse cx="61" cy="61" rx="3" ry="5.5" fill="#B8954A" opacity="0.45" transform="rotate(-45 61 61)"/>
+      <rect x="25" y="22" width="2.5" height="36" rx="0.5" fill="rgba(250,250,248,0.8)"/>
+      <rect x="20" y="22" width="13" height="2" rx="0.5" fill="rgba(250,250,248,0.8)"/>
+      <rect x="20" y="56" width="13" height="2" rx="0.5" fill="rgba(250,250,248,0.8)"/>
+      <rect x="36.5" y="22" width="2.5" height="36" rx="0.5" fill="rgba(250,250,248,0.8)"/>
+      <rect x="52" y="22" width="2.5" height="36" rx="0.5" fill="rgba(250,250,248,0.8)"/>
+      <line x1="37.5" y1="23" x2="53.5" y2="57" stroke="rgba(250,250,248,0.8)" stroke-width="2.5" stroke-linecap="round"/>
+      <circle cx="40" cy="40" r="2" fill="#B8954A" opacity="0.8"/>
+    </svg>
+    <span style="display:flex;flex-direction:column;line-height:1;">
+      <span style="font-family:'Playfair Display',serif;font-size:15px;font-weight:400;color:rgba(250,250,248,0.75);font-style:italic;">Ines</span>
+      <span style="font-size:8px;font-weight:500;letter-spacing:0.18em;text-transform:uppercase;color:#B8954A;margin-top:3px;">Coach Bien-Être</span>
+    </span>
+  </a>
+  <p class="footer-copy">© 2026 Ines Ngono — Coach Bien-Être. Tous droits réservés.</p>
 </footer>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 // Nav scroll
 const nav = document.getElementById('nav');
 window.addEventListener('scroll', () => {
@@ -994,10 +1101,25 @@ window.addEventListener('scroll', () => {
 
 // Scroll reveal
 const revealEls = document.querySelectorAll('.reveal');
-const ro = new IntersectionObserver(entries => {
-  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
-}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
-revealEls.forEach(el => ro.observe(el));
+setTimeout(() => {
+  revealEls.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top > window.innerHeight) {
+      el.classList.add('animate-hidden');
+    } else {
+      el.classList.add('visible');
+    }
+  });
+  const ro = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.remove('animate-hidden');
+        e.target.classList.add('visible');
+      }
+    });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  revealEls.forEach(el => ro.observe(el));
+}, 100);
 
 // Smooth anchor
 document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -1009,12 +1131,27 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 // Form submit
 function submitForm(btn) {
-  const orig = btn.innerHTML;
-  btn.innerHTML = 'Envoyé ✓';
-  btn.style.background = '#4A7050';
+  const prenom = document.getElementById('prenom').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
+
+  if (!prenom || !email || !message) {
+    btn.textContent = 'Remplissez tous les champs';
+    btn.style.background = '#c0392b';
+    btn.style.color = '#fff';
+    setTimeout(() => {
+      btn.innerHTML = 'Envoyer <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 9h12M9 3l6 6-6 6"/></svg>';
+      btn.style.background = '';
+      btn.style.color = '';
+    }, 2000);
+    return;
+  }
+
   btn.disabled = true;
-  setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; btn.disabled = false; }, 3000);
-}
-</script>
-</body>
+  btn.innerHTML = 'Envoi en cours…';
+
+  setTimeout(() => {
+    // Hide form fields, show success
+    const wrapper = document.getElementById('contactFormWrapper');
+    const fields = w
 </html>
