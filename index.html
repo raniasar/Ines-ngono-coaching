@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -680,6 +681,7 @@ h1 em { font-style: italic; color: var(--green-mid); }
   white-space: nowrap;
 }
 .submit-btn:hover { background: #3a6044; transform: translateY(-1px); box-shadow: 0 8px 24px rgba(78,124,89,0.25); }
+.submit-btn:disabled { opacity: 0.7; cursor: not-allowed; transform: none; }
 .submit-btn svg { transition: transform 0.25s; }
 .submit-btn:hover svg { transform: translateX(3px); }
 
@@ -775,10 +777,12 @@ footer {
   footer { flex-direction: column; gap: 12px; padding: 28px 24px; text-align: center; }
 }
 </style>
+
 </head>
 <body>
 
 <!-- NAV -->
+
 <nav id="nav">
   <a href="#" class="logo">
     <svg class="logo-svg" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
@@ -818,6 +822,7 @@ footer {
 </nav>
 
 <!-- HERO -->
+
 <section id="hero">
   <div class="hero-eyebrow">Coach bien-être certifiée</div>
   <h1>Votre <em>renaissance</em><br>commence ici</h1>
@@ -857,6 +862,7 @@ footer {
 <div class="divider"></div>
 
 <!-- ABOUT -->
+
 <section id="about">
   <div>
     <div class="about-label reveal">À propos</div>
@@ -887,6 +893,7 @@ footer {
 <div class="divider"></div>
 
 <!-- SERVICES -->
+
 <section id="services">
   <div class="section-header">
     <div class="section-label reveal">Accompagnement</div>
@@ -926,6 +933,7 @@ footer {
 </section>
 
 <!-- PRICING -->
+
 <section id="pricing">
   <div class="section-header">
     <div class="section-label reveal">Tarifs</div>
@@ -978,6 +986,7 @@ footer {
 </section>
 
 <!-- CONTACT -->
+
 <section id="contact">
   <div class="contact-wrapper">
     <div class="section-header">
@@ -1014,7 +1023,6 @@ footer {
               <div class="ch-value">06 52 76 81 59</div>
             </div>
           </a>
-          <!-- YouTube ajouté -->
           <a href="https://www.youtube.com/@dieuetnous" target="_blank" rel="noopener" class="contact-channel">
             <div class="ch-icon">
               <svg viewBox="0 0 24 24" fill="none" stroke="#B8954A" stroke-width="1.8">
@@ -1030,53 +1038,58 @@ footer {
         </div>
       </div>
 
-      <div class="contact-form reveal d2" id="contactFormWrapper">
-        <div class="form-row">
-          <div class="field">
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" placeholder="Sophie...">
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" placeholder="votre@email.com">
-          </div>
-        </div>
-        <div class="field">
-          <label for="sujet">Ce qui vous amène</label>
-          <select id="sujet">
-            <option value="" disabled selected>Choisissez un sujet...</option>
-            <option>Surmonter un traumatisme</option>
-            <option>Retrouver confiance en soi</option>
-            <option>Surmonter la dépression</option>
-            <option>Retrouver son chemin de vie</option>
-            <option>S'organiser en tant que HPI</option>
-            <option>Autre</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" placeholder="Partagez ce que vous ressentez..."></textarea>
-        </div>
-        <div class="form-submit">
-          <p class="form-note">Réponse sous 24h.<br>Confidentialité assurée.</p>
-          <button class="submit-btn" onclick="submitForm(this)">
-            Envoyer
-            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
-              <path d="M3 9h12M9 3l6 6-6 6"/>
-            </svg>
-          </button>
-        </div>
-        <div class="success-msg" id="successMsg">
-          <div class="success-icon">🌿</div>
-          <h4>Message envoyé !</h4>
-          <p>Merci de m'avoir contactée. Je vous répondrai dans les 24h avec bienveillance.</p>
-        </div>
+```
+  <!-- ══ FORMULAIRE FORMSPREE ══ -->
+  <div class="contact-form reveal d2" id="contactFormWrapper">
+    <div class="form-row">
+      <div class="field">
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom" placeholder="Sophie...">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="votre@email.com">
       </div>
     </div>
+    <div class="field">
+      <label for="sujet">Ce qui vous amène</label>
+      <select id="sujet" name="sujet">
+        <option value="" disabled selected>Choisissez un sujet...</option>
+        <option>Surmonter un traumatisme</option>
+        <option>Retrouver confiance en soi</option>
+        <option>Surmonter la dépression</option>
+        <option>Retrouver son chemin de vie</option>
+        <option>S'organiser en tant que HPI</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Partagez ce que vous ressentez..."></textarea>
+    </div>
+    <div class="form-submit">
+      <p class="form-note">Réponse sous 24h.<br>Confidentialité assurée.</p>
+      <button class="submit-btn" id="submitBtn" type="button" onclick="submitForm(this)">
+        Envoyer
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14">
+          <path d="M3 9h12M9 3l6 6-6 6"/>
+        </svg>
+      </button>
+    </div>
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">🌿</div>
+      <h4>Message envoyé !</h4>
+      <p>Merci de m'avoir contactée. Je vous répondrai dans les 24h avec bienveillance.</p>
+    </div>
+  </div>
+</div>
+```
+
   </div>
 </section>
 
 <!-- FOOTER -->
+
 <footer>
   <a href="#" class="footer-logo">
     <svg style="width:32px;height:32px;flex-shrink:0;" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
@@ -1143,35 +1156,53 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
   });
 });
 
-// Form submit
-function submitForm(btn) {
-  const prenom = document.getElementById('prenom').value.trim();
-  const email = document.getElementById('email').value.trim();
+// ══ FORMSPREE SUBMIT ══
+async function submitForm(btn) {
+  const prenom  = document.getElementById('prenom').value.trim();
+  const email   = document.getElementById('email').value.trim();
+  const sujet   = document.getElementById('sujet').value;
   const message = document.getElementById('message').value.trim();
 
+  // Validation
   if (!prenom || !email || !message) {
+    const orig = btn.innerHTML;
     btn.textContent = 'Remplissez tous les champs';
     btn.style.background = '#c0392b';
-    btn.style.color = '#fff';
-    setTimeout(() => {
-      btn.innerHTML = 'Envoyer <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 9h12M9 3l6 6-6 6"/></svg>';
-      btn.style.background = '';
-      btn.style.color = '';
-    }, 2000);
+    setTimeout(() => { btn.innerHTML = orig; btn.style.background = ''; }, 2200);
     return;
   }
 
+  // État chargement
   btn.disabled = true;
   btn.innerHTML = 'Envoi en cours…';
 
-  setTimeout(() => {
-    const wrapper = document.getElementById('contactFormWrapper');
-    const fields = wrapper.querySelectorAll('.form-row, .field, .form-submit');
-    fields.forEach(f => f.style.display = 'none');
-    const successMsg = document.getElementById('successMsg');
-    successMsg.style.display = 'block';
-  }, 1200);
+  try {
+    // ⚠️ Remplace YOUR_FORM_ID par ton vrai ID Formspree (ex: xpwzgkla)
+    const response = await fetch('https://formspree.io/f/xykbppjv', {
+      method: 'POST',
+      headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+      body: JSON.stringify({ prenom, email, sujet, message })
+    });
+
+    if (response.ok) {
+      // Succès : masquer les champs, afficher le message
+      const wrapper = document.getElementById('contactFormWrapper');
+      wrapper.querySelectorAll('.form-row, .field, .form-submit').forEach(f => f.style.display = 'none');
+      document.getElementById('successMsg').style.display = 'block';
+    } else {
+      throw new Error('Erreur serveur');
+    }
+  } catch (err) {
+    btn.disabled = false;
+    btn.innerHTML = 'Réessayer';
+    btn.style.background = '#c0392b';
+    setTimeout(() => {
+      btn.innerHTML = 'Envoyer <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 9h12M9 3l6 6-6 6"/></svg>';
+      btn.style.background = '';
+    }, 2500);
+  }
 }
 </script>
+
 </body>
 </html>
