@@ -550,12 +550,14 @@ h1 em { font-style: italic; color: var(--green-mid); }
 }
 
 .contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  margin-top: 60px;
+  display: flex;
+  gap: 40px;
+  align-items: flex-start;
 }
-
+.contact-info,
+.contact-form {
+  flex: 1;
+}
 .contact-info-title {
   font-family: 'Playfair Display', serif;
   font-size: 22px;
