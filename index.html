@@ -140,13 +140,11 @@ nav.scrolled { border-color: var(--border); }
 /* ── Mobile drawer ── */
 .mobile-menu {
   position: fixed;
+  inset: 0;
   top: 72px;
-  left: 0;
-  right: 0;
-  bottom: 0;
 
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(12px);
+  background: rgba(255,255,255,0.98);
+  backdrop-filter: blur(14px);
 
   z-index: 999;
 
@@ -154,63 +152,37 @@ nav.scrolled { border-color: var(--border); }
   flex-direction: column;
   padding: 30px 24px;
 
+  transform: translateY(-20px);
   opacity: 0;
-  transform: translateY(-10px);
   visibility: hidden;
   pointer-events: none;
 
-  transition: 0.3s ease;
+  transition: all 0.35s ease;
 }
 
-/* OPEN STATE */
 .mobile-menu.active {
-  opacity: 1;
   transform: translateY(0);
+  opacity: 1;
   visibility: visible;
   pointer-events: auto;
 }
 
-/* LINKS */
 .mobile-menu a {
-  color: #1f2a1f;
-  font-size: 18px;
-  padding: 16px 0;
-
-  border-bottom: 1px solid #eaeaea;
-
-  text-decoration: none;
-  font-weight: 500;
-
-  transition: 0.2s ease;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
 }
 
-.mobile-menu a:hover {
-  color: #4E7C59;
+.mobile-menu.active a {
+  opacity: 1;
+  transform: translateY(0);
 }
 
-/* REMOVE BORDER ON LAST ITEM */
-.mobile-menu a:last-child {
-  border-bottom: none;
-}
-
-/* CTA BUTTON */
-.mobile-menu .mob-btn {
-  margin-top: 20px;
-  padding: 14px;
-  text-align: center;
-
-  background: #4e7c59;
-  color: white;
-
-  border-radius: 12px;
-  border-bottom: none;
-  font-weight: 600;
-}
-
-.mobile-menu .mob-btn:hover {
-  background: #3a6044;
-  color: #fff;
-}
+.mobile-menu.active a:nth-child(1) { transition-delay: 0.1s; }
+.mobile-menu.active a:nth-child(2) { transition-delay: 0.15s; }
+.mobile-menu.active a:nth-child(3) { transition-delay: 0.2s; }
+.mobile-menu.active a:nth-child(4) { transition-delay: 0.25s; }
+.mobile-menu.active a:nth-child(5) { transition-delay: 0.3s; }
 /* ═══════════════════════════════
    HERO
 ═══════════════════════════════ */
@@ -1276,22 +1248,34 @@ window.addEventListener('scroll', () => {
 const hamburger = document.getElementById('hamburger');
 const mobileMenu = document.getElementById('mobileMenu');
 
-hamburger.addEventListener('click', () => {
+hamburger.addEventListener('click', (e) => {
+  e.stopPropagation();
+
   const isOpen = hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('active', isOpen);
-  hamburger.setAttribute('aria-expanded', isOpen);
-  mobileMenu.setAttribute('aria-hidden', !isOpen);
+  mobileMenu.classList.toggle('active');
+
   document.body.style.overflow = isOpen ? 'hidden' : '';
+});
+
+document.querySelectorAll('#mobileMenu a').forEach(link => {
+  link.addEventListener('click', closeMenu);
+});
+
+document.addEventListener('click', (e) => {
+  if (
+    mobileMenu.classList.contains('active') &&
+    !mobileMenu.contains(e.target) &&
+    !hamburger.contains(e.target)
+  ) {
+    closeMenu();
+  }
 });
 
 function closeMenu() {
   hamburger.classList.remove('open');
   mobileMenu.classList.remove('active');
-  hamburger.setAttribute('aria-expanded', false);
-  mobileMenu.setAttribute('aria-hidden', true);
   document.body.style.overflow = '';
 }
-
 /* ══ SCROLL REVEAL ══ */
 const reveals = document.querySelectorAll('.reveal');
 reveals.forEach(el => el.classList.add('animate-hidden'));
