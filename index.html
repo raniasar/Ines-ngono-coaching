@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
@@ -54,17 +55,26 @@ nav {
 nav.scrolled { border-color: var(--border); }
 
 /* ── Logo ── */
+/* CORRECTION : conteneur logo avec fond blanc neutre et taille généreuse */
 .logo {
   display: flex;
   align-items: center;
   text-decoration: none;
   flex-shrink: 0;
+  /* padding léger pour que le logo respire sur fond clair */
+  padding: 6px 10px;
+  background: var(--white);
+  border-radius: 6px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.06);
 }
 .logo-img {
-  height: clamp(60px, 8vw, 90px);
+  /* CORRECTION : taille augmentée et contraintes desserrées */
+  height: clamp(56px, 9vw, 100px);
+  max-height: 100px;
   width: auto;
   display: block;
   object-fit: contain;
+  /* Pas de mix-blend-mode → on garde les couleurs fidèles du logo */
 }
 
 /* ── Nav links ── */
@@ -789,17 +799,24 @@ footer {
   flex-wrap: wrap;
   gap: 12px;
 }
+
+/* CORRECTION footer logo : même traitement que nav */
 .footer-logo {
   display: flex;
   align-items: center;
   text-decoration: none;
+  padding: 6px 10px;
+  background: var(--white);
+  border-radius: 6px;
 }
 .footer-logo-img {
-  height: 60px;
+  /* CORRECTION : agrandi de 60px → 80px */
+  height: clamp(60px, 8vw, 80px);
   width: auto;
   display: block;
   object-fit: contain;
 }
+
 .footer-copy {
   font-size: 12px;
   font-weight: 300;
@@ -843,6 +860,15 @@ footer {
   .nav-links, .nav-btn { display: none; }
   .hamburger { display: flex; }
   .mobile-menu { display: flex; top: 72px; }
+
+  /* CORRECTION mobile : logo un peu plus petit pour pas déborder */
+  .logo {
+    padding: 4px 8px;
+  }
+  .logo-img {
+    height: clamp(48px, 11vw, 64px);
+    max-height: 64px;
+  }
 
   /* Hero */
   #hero {
@@ -894,10 +920,12 @@ footer {
   .hero-values { gap: 14px; }
 }
 </style>
+
 </head>
 <body>
 
 <!-- NAV -->
+
 <nav id="nav">
   <a href="#" class="logo">
     <img src="colored-logo.png" alt="Ines Ngono Coach Bien-Être" class="logo-img">
@@ -912,12 +940,14 @@ footer {
   <a href="#contact" class="nav-btn">Prendre rendez-vous</a>
 
   <!-- Hamburger mobile -->
+
   <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
     <span></span><span></span><span></span>
   </button>
 </nav>
 
 <!-- Mobile Menu drawer -->
+
 <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
   <a href="#about"    onclick="closeMenu()">À propos</a>
   <a href="#services" onclick="closeMenu()">Accompagnement</a>
@@ -927,6 +957,7 @@ footer {
 </nav>
 
 <!-- HERO -->
+
 <section id="hero">
   <div class="hero-eyebrow">Coach bien-être certifiée</div>
   <h1>Votre <em>renaissance</em><br>commence ici</h1>
@@ -951,6 +982,7 @@ footer {
 <div class="divider"></div>
 
 <!-- ABOUT -->
+
 <section id="about">
   <div>
     <div class="about-label reveal">À propos</div>
@@ -979,6 +1011,7 @@ footer {
 <div class="divider"></div>
 
 <!-- SERVICES -->
+
 <section id="services">
   <div class="section-header">
     <div class="section-label reveal">Accompagnement</div>
@@ -1018,6 +1051,7 @@ footer {
 </section>
 
 <!-- PRICING -->
+
 <section id="pricing">
   <div class="section-header">
     <div class="section-label reveal">Tarifs</div>
@@ -1055,6 +1089,7 @@ footer {
 </section>
 
 <!-- CONTACT -->
+
 <section id="contact">
   <div class="contact-wrapper">
     <div class="section-header">
@@ -1081,52 +1116,56 @@ footer {
         </div>
       </div>
 
-      <!-- FORMULAIRE -->
-      <div class="contact-form reveal d2" id="contactFormWrapper">
-        <div class="form-row">
-          <div class="field">
-            <label for="prenom">Prénom</label>
-            <input type="text" id="prenom" name="prenom" placeholder="Sophie...">
-          </div>
-          <div class="field">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="votre@email.com">
-          </div>
-        </div>
-        <div class="field">
-          <label for="sujet">Ce qui vous amène</label>
-          <select id="sujet" name="sujet">
-            <option value="" disabled selected>Choisissez un sujet...</option>
-            <option>Surmonter un traumatisme</option>
-            <option>Retrouver confiance en soi</option>
-            <option>Surmonter la dépression</option>
-            <option>Retrouver son chemin de vie</option>
-            <option>S'organiser en tant que HPI</option>
-            <option>Autre</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" placeholder="Partagez ce que vous ressentez..."></textarea>
-        </div>
-        <div class="form-submit">
-          <p class="form-note">Réponse sous 24h.<br>Confidentialité assurée.</p>
-          <button class="submit-btn" id="submitBtn" type="button" onclick="submitForm(this)">
-            Envoyer
-            <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 9h12M9 3l6 6-6 6"/></svg>
-          </button>
-        </div>
-        <div class="success-msg" id="successMsg">
-          <div class="success-icon">🌿</div>
-          <h4>Message envoyé !</h4>
-          <p>Merci de m'avoir contactée. Je vous répondrai dans les 24h avec bienveillance.</p>
-        </div>
+```
+  <!-- FORMULAIRE -->
+  <div class="contact-form reveal d2" id="contactFormWrapper">
+    <div class="form-row">
+      <div class="field">
+        <label for="prenom">Prénom</label>
+        <input type="text" id="prenom" name="prenom" placeholder="Sophie...">
+      </div>
+      <div class="field">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" placeholder="votre@email.com">
       </div>
     </div>
+    <div class="field">
+      <label for="sujet">Ce qui vous amène</label>
+      <select id="sujet" name="sujet">
+        <option value="" disabled selected>Choisissez un sujet...</option>
+        <option>Surmonter un traumatisme</option>
+        <option>Retrouver confiance en soi</option>
+        <option>Surmonter la dépression</option>
+        <option>Retrouver son chemin de vie</option>
+        <option>S'organiser en tant que HPI</option>
+        <option>Autre</option>
+      </select>
+    </div>
+    <div class="field">
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Partagez ce que vous ressentez..."></textarea>
+    </div>
+    <div class="form-submit">
+      <p class="form-note">Réponse sous 24h.<br>Confidentialité assurée.</p>
+      <button class="submit-btn" id="submitBtn" type="button" onclick="submitForm(this)">
+        Envoyer
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 9h12M9 3l6 6-6 6"/></svg>
+      </button>
+    </div>
+    <div class="success-msg" id="successMsg">
+      <div class="success-icon">🌿</div>
+      <h4>Message envoyé !</h4>
+      <p>Merci de m'avoir contactée. Je vous répondrai dans les 24h avec bienveillance.</p>
+    </div>
+  </div>
+</div>
+```
+
   </div>
 </section>
 
 <!-- FOOTER -->
+
 <footer>
   <a href="#" class="footer-logo">
     <img src="colored-logo.png" alt="Ines Ngono Coach Bien-Être" class="footer-logo-img">
@@ -1226,5 +1265,6 @@ async function submitForm(btn) {
   }
 }
 </script>
+
 </body>
 </html>
