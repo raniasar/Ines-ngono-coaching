@@ -1232,6 +1232,8 @@ footer {
   <p class="footer-copy">© 2026 Ines Ngono — Coach Bien-Être. Tous droits réservés.</p>
 </footer>
 
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+
 <script>
 /* ══ NAV SCROLL ══ */
 const nav = document.getElementById('nav');
@@ -1287,9 +1289,9 @@ async function submitForm(btn) {
     const orig = btn.innerHTML;
     btn.textContent = 'Remplissez tous les champs';
     btn.style.background = '#c0392b';
-    setTimeout(() => {
-      btn.innerHTML = orig;
-      btn.style.background = '';
+    setTimeout(() => { 
+      btn.innerHTML = orig; 
+      btn.style.background = ''; 
     }, 2200);
     return;
   }
@@ -1312,7 +1314,7 @@ async function submitForm(btn) {
       headers: { 'Accept': 'application/json' }
     });
 
-    if (!response.ok) throw new Error('Formspree error');
+    if (!response.ok) throw new Error(`Formspree error ${response.status}`);
 
     document.getElementById('contactFormWrapper')
       .querySelectorAll('.form-row, .field, .form-submit')
@@ -1323,7 +1325,6 @@ async function submitForm(btn) {
   } catch (err) {
     btn.innerHTML = 'Erreur, réessaie';
     btn.style.background = '#c0392b';
-
     setTimeout(() => {
       btn.innerHTML = origHtml;
       btn.style.background = '';
