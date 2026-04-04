@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 
 <html lang="fr">
@@ -1277,7 +1278,7 @@ const mobileMenu = document.getElementById('mobileMenu');
 
 hamburger.addEventListener('click', () => {
   const isOpen = hamburger.classList.toggle('open');
-  mobileMenu.classList.toggle('open', isOpen);
+  mobileMenu.classList.toggle('active', isOpen);
   hamburger.setAttribute('aria-expanded', isOpen);
   mobileMenu.setAttribute('aria-hidden', !isOpen);
   document.body.style.overflow = isOpen ? 'hidden' : '';
@@ -1285,7 +1286,7 @@ hamburger.addEventListener('click', () => {
 
 function closeMenu() {
   hamburger.classList.remove('open');
-  mobileMenu.classList.remove('open');
+  mobileMenu.classList.remove('active');
   hamburger.setAttribute('aria-expanded', false);
   mobileMenu.setAttribute('aria-hidden', true);
   document.body.style.overflow = '';
