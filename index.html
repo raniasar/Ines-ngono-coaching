@@ -911,6 +911,49 @@ footer {
   .hero-value-icon { margin-bottom: 0; }
   .hero-values { gap: 14px; }
 }
+  /* CONTACT VERSION LUXE FIX */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: clamp(30px, 5vw, 80px);
+  align-items: start;
+}
+
+.contact-form {
+  background: var(--white);
+  padding: clamp(24px, 3vw, 40px);
+  border-radius: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+}
+
+.field input,
+.field select,
+.field textarea {
+  width: 100%;
+  min-width: 0;
+  border-radius: 6px;
+}
+
+.submit-btn {
+  width: 100%;
+  justify-content: center;
+}
+
+/* RESPONSIVE PARFAIT */
+@media (max-width: 900px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-info {
+    order: 1;
+  }
+
+  .contact-form {
+    order: 2;
+  }
+}
 </style>
 
 </head>
@@ -1084,75 +1127,92 @@ footer {
 
 <section id="contact">
   <div class="contact-wrapper">
+
     <div class="section-header">
       <div class="section-label reveal">Contact</div>
       <h2 class="section-title reveal d1">Faites le premier <em>pas</em></h2>
     </div>
+
     <div class="contact-grid">
+
+      <!-- INFOS -->
       <div class="contact-info reveal d1">
         <h3 class="contact-info-title">Je suis là pour vous</h3>
-        <p class="contact-info-text">N'hésitez pas à me contacter par le moyen qui vous convient le mieux. Je réponds dans les 24h.</p>
+        <p class="contact-info-text">
+          N'hésitez pas à me contacter. Chaque message est lu avec attention et bienveillance. Réponse sous 24h.
+        </p>
+
         <div class="contact-channels">
-          <a href="/cdn-cgi/l/email-protection#dfb1b8b0b1b0b6b1baac9fa6beb7b0b0f1b9ad" class="contact-channel">
-            <div class="ch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B8954A" stroke-width="1.8"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-            <div><div class="ch-label">Email</div><div class="ch-value"><span class="__cf_email__" data-cfemail="2f414840414046414a5c6f564e47404001495d">[email&#160;protected]</span></div></div>
+
+          <a href="mailto:contact@ines-coaching.com" class="contact-channel">
+            <div class="ch-icon">📧</div>
+            <div>
+              <div class="ch-label">Email</div>
+              <div class="ch-value">contact@ines-coaching.com</div>
+            </div>
           </a>
+
           <a href="tel:+33652768159" class="contact-channel">
-            <div class="ch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B8954A" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 013 1.18 2 2 0 015 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L9.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg></div>
-            <div><div class="ch-label">Téléphone</div><div class="ch-value">06 52 76 81 59</div></div>
+            <div class="ch-icon">📞</div>
+            <div>
+              <div class="ch-label">Téléphone</div>
+              <div class="ch-value">06 52 76 81 59</div>
+            </div>
           </a>
-          <a href="https://www.youtube.com/@dieuetnous" target="_blank" rel="noopener" class="contact-channel">
-            <div class="ch-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#B8954A" stroke-width="1.8"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46A2.78 2.78 0 001.46 6.42 29 29 0 001 12a29 29 0 00.46 5.58 2.78 2.78 0 001.95 1.96C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.96A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="#B8954A" stroke="none"/></svg></div>
-            <div><div class="ch-label">YouTube</div><div class="ch-value">@dieuetnous</div></div>
-          </a>
+
         </div>
       </div>
 
-```
-  <!-- FORMULAIRE -->
-  <div class="contact-form reveal d2" id="contactFormWrapper">
-    <div class="form-row">
-      <div class="field">
-        <label for="prenom">Prénom</label>
-        <input type="text" id="prenom" name="prenom" placeholder="Sophie...">
-      </div>
-      <div class="field">
-        <label for="email">Email</label>
-        <input type="email" id="email" name="email" placeholder="votre@email.com">
-      </div>
-    </div>
-    <div class="field">
-      <label for="sujet">Ce qui vous amène</label>
-      <select id="sujet" name="sujet">
-        <option value="" disabled selected>Choisissez un sujet...</option>
-        <option>Surmonter un traumatisme</option>
-        <option>Retrouver confiance en soi</option>
-        <option>Surmonter la dépression</option>
-        <option>Retrouver son chemin de vie</option>
-        <option>S'organiser en tant que HPI</option>
-        <option>Autre</option>
-      </select>
-    </div>
-    <div class="field">
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Partagez ce que vous ressentez..."></textarea>
-    </div>
-    <div class="form-submit">
-      <p class="form-note">Réponse sous 24h.<br>Confidentialité assurée.</p>
-      <button class="submit-btn" id="submitBtn" type="button" onclick="submitForm(this)">
-        Envoyer
-        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M3 9h12M9 3l6 6-6 6"/></svg>
-      </button>
-    </div>
-    <div class="success-msg" id="successMsg">
-      <div class="success-icon">🌿</div>
-      <h4>Message envoyé !</h4>
-      <p>Merci de m'avoir contactée. Je vous répondrai dans les 24h avec bienveillance.</p>
-    </div>
-  </div>
-</div>
-```
+      <!-- FORMULAIRE -->
+      <div class="contact-form reveal d2" id="contactFormWrapper">
 
+        <div class="form-row">
+          <div class="field">
+            <label>Prénom</label>
+            <input type="text" id="prenom" placeholder="Sophie...">
+          </div>
+
+          <div class="field">
+            <label>Email</label>
+            <input type="email" id="email" placeholder="votre@email.com">
+          </div>
+        </div>
+
+        <div class="field">
+          <label>Ce qui vous amène</label>
+          <select id="sujet">
+            <option value="">Choisissez un sujet...</option>
+            <option>Surmonter un traumatisme</option>
+            <option>Retrouver confiance en soi</option>
+            <option>Surmonter la dépression</option>
+            <option>Retrouver son chemin de vie</option>
+            <option>S'organiser en tant que HPI</option>
+            <option>Autre</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label>Message</label>
+          <textarea id="message" placeholder="Partagez ce que vous ressentez..."></textarea>
+        </div>
+
+        <div class="form-submit">
+          <p class="form-note">Réponse sous 24h · Confidentialité assurée</p>
+
+          <button class="submit-btn" type="button" onclick="submitForm(this)">
+            Envoyer
+          </button>
+        </div>
+
+        <div class="success-msg" id="successMsg">
+          <div class="success-icon">🌿</div>
+          <h4>Message envoyé !</h4>
+          <p>Je vous répondrai avec bienveillance sous 24h.</p>
+        </div>
+
+      </div>
+
+    </div>
   </div>
 </section>
 
