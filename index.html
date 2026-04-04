@@ -138,21 +138,20 @@ nav.scrolled { border-color: var(--border); }
 
 /* ── Mobile drawer ── */
 .mobile-menu {
-  /* plein écran sous la nav */
   position: fixed;
   top: 72px;
   left: 0;
   right: 0;
   bottom: 0;
 
-  background: rgba(255, 255, 255, 0.98); /* 👈 BLANC opaque */
-  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
 
-  z-index: 99;
+  z-index: 999;
 
-  padding: 24px 24px 40px;
   display: flex;
   flex-direction: column;
+  padding: 30px 24px;
 
   opacity: 0;
   transform: translateY(-10px);
@@ -161,39 +160,56 @@ nav.scrolled { border-color: var(--border); }
 
   transition: 0.3s ease;
 }
-.mobile-menu.open {
+
+/* OPEN STATE */
+.mobile-menu.active {
   opacity: 1;
-  visibility: visible;
   transform: translateY(0);
-  pointer-events: all;
+  visibility: visible;
+  pointer-events: auto;
 }
+
+/* LINKS */
 .mobile-menu a {
-  color: #263029; /* texte foncé */
+  color: #1f2a1f;
   font-size: 18px;
   padding: 16px 0;
-  border-bottom: 1px solid #E2EAE2;
+
+  border-bottom: 1px solid #eaeaea;
+
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: 0.2s ease;
 }
 
 .mobile-menu a:hover {
   color: #4E7C59;
 }
-.mobile-menu a:last-child { border-bottom: none; }
-.mobile-menu a:hover { color: var(--green); }
+
+/* REMOVE BORDER ON LAST ITEM */
+.mobile-menu a:last-child {
+  border-bottom: none;
+}
+
+/* CTA BUTTON */
 .mobile-menu .mob-btn {
   margin-top: 20px;
-  font-size: 12px;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--white);
-  background: var(--green);
-  padding: 14px 24px;
-  border-radius: var(--radius);
+  padding: 14px;
   text-align: center;
-  border-bottom: none !important;
-}
-.mobile-menu .mob-btn:hover { background: #3a6044; color: var(--white); }
 
+  background: #4e7c59;
+  color: white;
+
+  border-radius: 12px;
+  border-bottom: none;
+  font-weight: 600;
+}
+
+.mobile-menu .mob-btn:hover {
+  background: #3a6044;
+  color: #fff;
+}
 /* ═══════════════════════════════
    HERO
 ═══════════════════════════════ */
@@ -990,11 +1006,18 @@ footer {
 <!-- Mobile Menu drawer -->
 
 <nav class="mobile-menu" id="mobileMenu" aria-hidden="true">
-  <a href="#about"    onclick="closeMenu()">À propos</a>
-  <a href="#services" onclick="closeMenu()">Accompagnement</a>
-  <a href="#pricing"  onclick="closeMenu()">Tarifs</a>
-  <a href="#contact"  onclick="closeMenu()">Contact</a>
-  <a href="#contact"  onclick="closeMenu()" class="mob-btn">Prendre rendez-vous →</a>
+  <div class="mobile-menu-inner">
+
+    <a href="#about" onclick="closeMenu()">À propos</a>
+    <a href="#services" onclick="closeMenu()">Accompagnement</a>
+    <a href="#pricing" onclick="closeMenu()">Tarifs</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+
+    <a href="#contact" onclick="closeMenu()" class="mob-btn">
+      Prendre rendez-vous →
+    </a>
+
+  </div>
 </nav>
 
 <!-- HERO -->
